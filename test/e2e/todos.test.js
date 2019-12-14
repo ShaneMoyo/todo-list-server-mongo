@@ -101,13 +101,15 @@ it('Should get a todo by id with token', () => {
     });
 })
 
-it('Should delete my todo token', () => {
+it('Should delete my todo with token', () => {
   return request.post('/api/todos')
   .set('Authorization', token1)
   .send(testTodo[0])
   .then(({ body: savedTodo }) => {
+    console.log('saved todo, ', savedTodo)
     return request.delete(`/api/todos/${savedTodo._id}`)
       .set('Authorization', token1)
+      .send(savedTodo)
       .then(({ body: deleteResponse }) => {
         return request.get(`/api/todos/${savedTodo._id}`)
         .set('Authorization', token1)
