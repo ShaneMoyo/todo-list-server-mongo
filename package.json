@@ -15,5 +15,12 @@
   "bugs": {
     "url": "https://github.com/ShaneMoyo/todo-list-server-mongo/issues"
   },
-  "homepage": "https://github.com/ShaneMoyo/todo-list-server-mongo#readme"
+  "homepage": "https://github.com/ShaneMoyo/todo-list-server-mongo#readme",
+  "dependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "eslint": "^6.7.2",
+    "mocha": "^6.2.2",
+    "morgan": "^1.9.1"
+  }
 }
