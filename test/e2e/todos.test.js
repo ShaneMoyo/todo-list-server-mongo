@@ -106,7 +106,6 @@ it('Should delete my todo with token', () => {
   .set('Authorization', token1)
   .send(testTodo[0])
   .then(({ body: savedTodo }) => {
-    console.log('saved todo, ', savedTodo)
     return request.delete(`/api/todos/${savedTodo._id}`)
       .set('Authorization', token1)
       .send(savedTodo)
@@ -121,21 +120,21 @@ it('Should delete my todo with token', () => {
     });
 })
 
-it('Should update my appointment by id', () => {
+it('Should update my todo by id', () => {
     return request.post('/api/todos')
         .set('Authorization', token2)
         .send(testTodo[0])
-        .then(({ body: savedAppointemnt }) => savedAppointemnt)
-        .then(savedAppointemnt => {
-            testTodo[1].user = savedAppointemnt.user;
-            return request.put(`/api/todos/me/${savedAppointemnt._id}`)
+        .then(({ body: savedTodo }) => savedTodo)
+        .then(savedTodo => {
+            testTodo[1].user = savedTodo.user;
+            return request.put(`/api/todos/me/${savedTodo._id}`)
                 .set('Authorization', token2)
                 .send(testTodo[1]);
         })
-        .then(({ body: updatedAppointemnt }) => {
-            console.log('updatedAppointemnt: ', updatedAppointemnt)
-            assert.deepEqual(updatedAppointemnt.service, testTodo[1].service);
-            assert.deepEqual(updatedAppointemnt.status, testTodo[0].status);
+        .then(({ body: updatedTodo }) => {
+            console.log('updatedTodo: ', updatedTodo)
+            assert.deepEqual(updatedTodo.service, testTodo[1].service);
+            assert.deepEqual(updatedTodo.status, testTodo[0].status);
         });
 });
 
